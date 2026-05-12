@@ -1,0 +1,6 @@
+theme = Atom One Dark
+font-size = 16
+mouse-hide-while-typing = true
+cursor-style = underline
+cursor-style-blink = false
+shell-integration-features = no-cursor
