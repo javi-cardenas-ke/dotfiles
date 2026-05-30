@@ -23,6 +23,7 @@ cask "font-jetbrains-mono"
 # system tools
 brew "git" # version control
 brew "stow" # dotfiles manager
+brew "cloc" # count lines of code
 
 # shell
 brew "starship"
