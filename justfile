@@ -1,5 +1,3 @@
-set working-directory := justfile_directory()
-
 default:
     @just --list
 
@@ -9,7 +7,7 @@ brew:
     brew bundle --verbose
 
 stow:
-    cd stow && stow -t ~ *
+    cd stow && stow -t ~ * && ls -la ~/.config
 
 unstow:
     cd stow && stow -t ~ -D *
