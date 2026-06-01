@@ -24,6 +24,7 @@ cask "font-jetbrains-mono"
 brew "git" # version control
 brew "stow" # dotfiles manager
 brew "cloc" # count lines of code
+brew "just" # task runner
 
 # shell
 brew "starship"

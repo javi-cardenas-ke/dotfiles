@@ -14,4 +14,4 @@ eval "$(starship init zsh)"
 
 source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-alias dotfiles="cd ~/repos/javi-cardenas/dotfiles"
+alias dotfiles="cd ~/repos/javi-cardenas/dotfiles && zed ."

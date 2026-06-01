@@ -1,6 +1,10 @@
 # MacOS Development Setup
 This document has been updated for macOS 26. You can download the repo on a new device as a ZIP to get started.
 
+```sh
+just setup # install packages and link dotfiles after clone
+```
+
 ## Homebrew
 
 Install [Homebrew](https://brew.sh/), the missing package manager for macOS and make sure to add Homebrew to your PATH.
@@ -14,7 +18,7 @@ brew --version # verify installation
 A [Brewfile](https://docs.brew.sh/Brew-Bundle-and-Brewfile) is a single configuration file that lists all your Homebrew packages and applications, letting you set up new machines with one command.
 
 ```sh
-brew bundle --verbose
+just brew
 ```
 
 `brew` installs CLI tools to `/usr/local/bin` and `cask` installs GUI applications to `/Applications`
@@ -36,13 +40,8 @@ git clone git@github.com:javi-cardenas/dotfiles.git
 [GNU Stow](https://www.gnu.org/software/stow/) creates symlinks from this repository to dotfiles in your home directory.
 
 ```sh
-cd stow
-stow -t ~ * # stow all packages
-ls -la ~/.config  # verify symlinks
-
-stow -t ~ -R * # refresh symlinks after git pull
-stow -t ~ -D * # remove symlinks
-stow -t ~ --adopt .gitconfig # WARNING - this will overwrite the repo's file with your local machine's file
+just stow # create symlinks
+just unstow # remove symlinks
 ```
 
 ## MacOS
@@ -50,10 +49,7 @@ stow -t ~ --adopt .gitconfig # WARNING - this will overwrite the repo's file wit
 ### Finder
 
 ```sh
-chflags nohidden ~/Library # show the Library folder
-defaults write com.apple.finder AppleShowAllFiles YES # show all hidden files
-defaults write com.apple.finder ShowPathbar -bool true # show the path bar
-defaults write com.apple.finder ShowStatusBar -bool true # show the status bar
+just finder
 ```
 
 In Finder, use `cmd + shift + h` to take you to the Home folder and then drag it to the sidebar.
