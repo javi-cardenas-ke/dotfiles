@@ -1,15 +1,54 @@
 {
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
+  },
   "agent": {
+    "favorite_models": [
+      {
+        "provider": "openai",
+        "model": "gpt-5.6-sol",
+        "enable_thinking": true,
+        "effort": "low"
+      }
+    ],
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-5.6-sol",
+      "enable_thinking": true,
+      "effort": "low"
+    },
     "dock": "right",
     "sidebar_side": "right",
   },
   "agent_servers": {
     "cursor": {
       "default_config_options": {
-        "mode": "ask",
+        "fast": "true",
+        "reasoning": "high",
+        "model": "gpt-5.6-sol",
+        "mode": "agent",
       },
       "favorite_config_option_values": {
-        "model": ["composer-2.5[fast=true]"],
+        "model": [
+          "composer-2.5[fast=true]",
+          "gpt-5.6-sol",
+          "composer-2.5"
+        ],
       },
       "type": "registry",
     },
@@ -37,6 +76,12 @@
   "buffer_font_size": 13,
   "cli_default_open_behavior": "new_window",
   "icon_theme": "Material Icon Theme",
+  "languages": {
+    "YAML": {
+      "format_on_save": "off",
+      // "formatter": "language_server",
+    },
+  },
   "outline_panel": {
     "dock": "left",
   },

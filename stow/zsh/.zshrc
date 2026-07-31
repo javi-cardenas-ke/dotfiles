@@ -66,3 +66,69 @@ alias dotfiles="cd ~/repos/javi-cardenas/dotfiles && zed ."
 source <(kubectl completion zsh)
 export CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER=x86_64-linux-musl-gcc
 export CARGO_TARGET_X86_64_UNKNOWN_LINUX_MUSL_LINKER=x86_64-linux-musl-gcc
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+
+export CLUSTER_RG=rg-nova5-app-dev-cus
+export CLUSTER_NAME=aks-nova5-nvak8s-dev-cus
+
+kinvoke() {
+        az aks command invoke -g $CLUSTER_RG -n $CLUSTER_NAME --command "kubectl $*"
+}
+
+# set -euo pipefail
+
+# kinvoke() {
+#   if [[ -z "${CLUSTER_NAMESPACE:-}" ]]; then
+#     az aks command invoke \
+#       -g "$CLUSTER_RESOURCE_GROUP" \
+#       -n "$CLUSTER_NAME" \
+#       --command "kubectl $(printf '%q ' "$@")"
+#   else
+#     az aks command invoke \
+#       -g "$CLUSTER_RESOURCE_GROUP" \
+#       -n "$CLUSTER_NAME" \
+#       --command "kubectl -n "$CLUSTER_NAMESPACE" $(printf '%q ' "$@")"
+#   fi
+# }
+
+
+# while [[ $# -gt 0 ]]; do
+#   case "$1" in
+#     --cluster-resource-group|-g)
+#       CLUSTER_RESOURCE_GROUP="$2"
+#       shift 2
+#       ;;
+
+#     --cluster-name|-c)
+#       CLUSTER_NAME="$2"
+#       shift 2
+#       ;;
+
+#     --namespace|-n)
+#       CLUSTER_NAMESPACE="$2"
+#       shift 2
+#       ;;
+
+#     -h|--help)
+#       echo "Usage: $0 [--cluster-resource-group <rg>] [--cluster-name <name>] [--namespace <name>] kubectl-command"
+#       echo "Usage: export CLUSTER_RESOURCE_GROUP=<rg> CLUSTER_NAME=<name> CLUSTER_NAMESPACE=<name> && $0 kubectl-command"
+#       exit 0
+#       ;;
+
+#     *)
+#       # echo "Unknown option: $1"
+#       # exit 1
+#       break
+#       ;;
+#   esac
+# done
+
+# if [[ -z "${CLUSTER_RESOURCE_GROUP:-}" || -z "${CLUSTER_NAME:-}" ]]; then
+#   echo "Missing required arguments"
+#   echo "Usage: $0 [--cluster-resource-group <rg>] [--cluster-name <name>] [--namespace <name>] kubectl-command"
+#   echo "Usage: export CLUSTER_RESOURCE_GROUP=<rg> CLUSTER_NAME=<name> CLUSTER_NAMESPACE=<name> && $0 kubectl-command"
+#   exit 1
+# fi
+
+# kinvoke "$@"
